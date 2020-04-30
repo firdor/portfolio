@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  padding: 0 0 50px 0;
+}
+
+.countdown {
+  position: fixed;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  background: #fff;
+  text-align: center;
+}

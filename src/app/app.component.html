@@ -1,0 +1,50 @@
+<div class="text-center">
+  <div class="d-inline-block total-chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [labels]="chartOptions.labels"
+      [responsive]="chartOptions.responsive"
+    ></apx-chart>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table  class="table table-bordered table-dark">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Menge</th>
+        <th>Investment</th>
+        <th>Preis</th>
+        <th>Wert</th>
+        <th>Änderung (€)</th>
+        <th>Änderung (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let coin of coins" [class.bg-success]="coin.status" [class.bg-danger]="!coin.status">
+        <td>{{coin.name}}</td>
+        <td>{{coin.amount}}</td>
+        <td>{{coin.investment}} €</td>
+        <td>{{coin.price}} €</td>
+        <td>{{coin.value}} €</td>
+        <td>{{coin.change.eur}} €</td>
+        <td>{{coin.change.per}} %</td>
+      </tr>      
+    </tbody>
+    <tfoot>
+      <tr [class.bg-success]="totalChangeEur>0" [class.bg-danger]="totalChangeEur<0">
+        <td colspan="2">Gesamt</td>
+        <td colspan="2">{{totalInvestment | number:'1.2-2'}} €</td>
+        <td>{{totalValue | number:'1.0-2'}} €</td>
+        <td>{{totalChangeEur | number:'1.2-2'}} €</td>
+        <td>{{totalChangePer | number:'1.2-2'}} %</td>
+      </tr>
+    </tfoot>
+  </table>  
+</div>
+
+<div class="countdown">
+  <h4>Reload: {{countdown}}</h4>
+</div>
